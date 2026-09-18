@@ -1,0 +1,32 @@
+simulation:
+  carrier_frequency: 28.0e+9       # 28 GHz mmWave band n257
+  bandwidth: 100.0e+6              # 100 MHz bandwidth
+  scene_name: "etoile"             # Paris Etoile dense urban microcell
+  tx_power_dbm: 30.0               # 30 dBm (1 Watt) EIRP
+  max_depth: 1                     # Direct LoS + 1st-order specular reflections
+  thermal_noise_floor_dbm: -140.0
+  outage_threshold_dbm: -95.0      # 3GPP MCS-0 demodulation limit
+
+gnb_positions:
+  - [-120.0,  60.0, 30.0]          # gNB-0 (North-West rooftop)
+  - [ 100.0,  70.0, 32.0]          # gNB-1 (North-East rooftop)
+  - [  90.0, -80.0, 28.0]          # gNB-2 (South-East rooftop)
+  - [-110.0, -75.0, 30.0]          # gNB-3 (South-West rooftop)
+
+handover_3gpp:
+  hom_db: 3.0                      # Handover Margin (HOM)
+  ttt_ms: 200.0                    # Time-to-Trigger (TTT)
+  exec_delay_ms: 50.0              # Layer-3 RRC signaling delay
+
+data_pipeline:
+  sampling_interval_s: 0.1         # 100 ms telemetry sampling
+  lookback_window: 10              # 1.0 s historical window (W = 10)
+  prediction_horizon: 5            # 500 ms forecasting horizon (5 steps ahead)
+  num_training_trajectories: 18
+
+training:
+  epochs: 25
+  batch_size: 32
+  learning_rate: 0.001
+  early_stopping_patience: 5
+  confidence_threshold: 0.70       # Minimum Softmax probability to trigger proactive switch

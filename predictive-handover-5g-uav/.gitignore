@@ -1,0 +1,67 @@
+# 1. Virtual Environments (NEVER commit venv - hundreds of megabytes of binaries)
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# 2. Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+
+# 3. Jupyter / Google Colab Notebook Checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# 4. Large Datasets & Binary Simulation Data
+*.npz
+*.npy
+*.parquet
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# 5. Machine Learning Models & Checkpoints
+models/*.keras
+models/*.h5
+models/*.savedmodel/
+checkpoints/
+*.pb
+*.tflite
+
+# Preserve the directory structure
+!models/.gitkeep
+
+# 6. Large Media & Archive Exports (GitHub rejects files > 100MB)
+figures/*.mp4
+figures/*.zip
+*.zip
+*.tar.gz
+*.7z
+
+# Keep the figures directory and vector/HTML visuals tracked
+!figures/.gitkeep
+!figures/*.pdf
+!figures/*.png
+!figures/*.html
+
+# 7. OS & Editor Metadata
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# VS Code workspace settings (ignore user-specific state)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
